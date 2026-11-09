@@ -1,6 +1,14 @@
 # Vader5Juice — shrinking battery bars
 
-## First run
+## Quick start — download and run the EXE
+1. Download [Vader5Juice.exe](Vader5Juice.exe) from this repository.
+2. Save it in a permanent folder on your Windows PC. Keep it there if you enable **Start with Windows**.
+3. Plug in the Flydigi 2.4 GHz receiver, wake your Vader 5 Pro in its usual PC/XInput mode, and close Flydigi Space Station, including its background/tray process.
+4. Double-click `Vader5Juice.exe`. The app appears in the Windows tray (possibly behind the ^ arrow); hover to see the reported charge and right-click for options.
+
+The EXE is unsigned, so Windows may show a security warning. Only run it if you trust the source. Settings and logs are stored in `%LOCALAPPDATA%\Vader5Juice`.
+
+## Run from source
 1. Extract the entire ZIP into a permanent folder, such as Documents\Vader5Juice.
 2. Install Python 3.12 or 3.13 for Windows from https://www.python.org/downloads/windows/ (include the Python launcher).
 3. Plug in the Flydigi 2.4 GHz receiver and wake your Vader 5 Pro in its usual PC/XInput mode. Close Flydigi Space Station, including its background/tray process.
@@ -34,8 +42,8 @@ Only the USB-addressable **Charging Station 2 Pro**, VID 37D7 / PID 6001, is sup
 ## Troubleshooting
 Right-click **Open diagnostics folder**. The log and settings live in `%LOCALAPPDATA%\Vader5Juice`. Existing settings in the former `%LOCALAPPDATA%\VaderBattery` folder are copied automatically on first launch after upgrading. The diagnostics action adds the Flydigi HID interface inventory to the log. If battery or lighting fails, share `diagnostics.log` and confirm your dock model. Close Space Station/other RGB controller tools and reconnect the receiver before retrying. Logs may include HID paths/device serials; inspect before sharing publicly.
 
-## Optional single-file EXE
-After setup, quit the app and run **Build-EXE.bat** on your Windows PC. It installs PyInstaller and creates `dist\Vader5Juice.exe` with the supplied app logo. Run that EXE without needing the source folder's environment. It is unsigned. No prebuilt Windows EXE is included: this package was prepared on Linux, and PyInstaller Windows builds must run on Windows.
+## Build the EXE from source
+After setup, quit the app and run **Build-EXE.bat** on your Windows PC. It installs PyInstaller and creates `Vader5Juice.exe` in the project folder with the supplied app logo. Run that EXE without needing the source folder's Python environment. The included EXE is unsigned; Windows builds must be made on Windows.
 
 ## Validation
 Protocol tests verify supplied battery examples, report framing/checksums, configuration versions 2/3, dock pixel payload, shrinking bars at every reported level, and malformed replies. The app has NOT been tested against your physical controller, dock, or Windows HID stack. Treat the first run as a hardware compatibility test; successful writes do not provide visual confirmation. Complete source is included.
